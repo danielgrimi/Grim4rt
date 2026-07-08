@@ -34,6 +34,10 @@ describe('CollectionsGrid', () => {
         <CollectionsGrid />
       </LanguageProvider>
     )
-    expect(screen.getByText('2 obras')).toBeInTheDocument()
+    // Both "Figura Humana" and "Estudios" have 2 works, so "2 obras" appears
+    // twice — scope the assertion to one specific card rather than
+    // getByText, which throws on multiple matches.
+    const figuraCard = screen.getByText('Figura Humana').closest('a')
+    expect(figuraCard).toHaveTextContent('2 obras')
   })
 })
