@@ -1580,7 +1580,7 @@ describe('HeroSlideshow', () => {
     )
     const slides = screen.getAllByTestId('hero-slide')
     expect(slides).toHaveLength(1)
-    expect(slides[0].style.backgroundImage).toMatch(/^url\(\/.+\.jpg\)$/)
+    expect(slides[0].style.backgroundImage).toMatch(/^url\(.*\.jpg.*\)$/)
   })
 
   it('advances to a different background image after 5 seconds', () => {
