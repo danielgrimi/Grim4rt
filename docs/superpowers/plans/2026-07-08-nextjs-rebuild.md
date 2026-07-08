@@ -32,7 +32,6 @@
 - Create: `vitest.config.ts`
 - Create: `.gitignore`
 - Create: `src/test/setup.ts`
-- Create: `src/app/favicon.ico` (copy from existing repo — see step 8)
 
 **Interfaces:**
 - Produces: `@/*` path alias resolving to `src/*` (used by every later task's imports), the `npm run dev|build|start|lint|test|test:run` scripts, Tailwind brand color tokens (`brand.black`, `brand.dark`, `brand.card`, `brand.border`, `brand.accent`, `brand.accentLight`, `brand.text`, `brand.muted`) and font family tokens (`font-display`, `font-sans`) consumed by every component task.
@@ -380,6 +379,9 @@ export const metadata: Metadata = {
     title: 'Daniel Grimaldi — Artista Plástico',
     description: 'Pintura que habita el territorio del anhelo.',
     images: ['/obra_principal.jpg'],
+  },
+  icons: {
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>",
   },
 }
 
@@ -2305,7 +2307,6 @@ git commit -m "feat: add collection detail page at /colecciones/[slug]"
 
 **Files:**
 - Move: all `*.jpg` files and `foto bio.jpg` from repo root to `public/`
-- Modify: `src/app/favicon.ico` (create from the emoji favicon used today, or a simple placeholder)
 
 **Interfaces:**
 - Produces: every `/<filename>.jpg` URL referenced by Tasks 7-15's `img src="/${artwork.img}"` and `src="/foto bio.jpg"`.
