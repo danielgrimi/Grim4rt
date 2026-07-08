@@ -1092,7 +1092,7 @@
       return `
         <div class="artwork-card reveal visible" onclick="openLightbox('${id}')">
           <div class="artwork-img-wrap">
-            <img class="artwork-img" src="${w.img}" alt="${w.title.es}" onerror="this.style.display='none';this.parentNode.innerHTML+='<div style=\'padding:2rem;text-align:center;font-size:0.7rem;color:var(--muted)\'>${w.img}</div>'"/>
+            <img class="artwork-img" src="${w.img}" alt="${w.title.es}" onerror="this.style.display='none';this.parentNode.innerHTML+='<div style=&quot;padding:2rem;text-align:center;font-size:0.7rem;color:var(--muted)&quot;>${w.img}</div>'"/>
             <div class="artwork-overlay"><button class="overlay-btn">${l === 'es' ? 'Ver detalle' : 'View detail'}</button></div>
           </div>
           <div class="artwork-info">
@@ -1164,7 +1164,7 @@
         const worksLabel = currentLang === 'es' ? (count === 1 ? '1 obra' : `${count} obras`) : (count === 1 ? '1 work' : `${count} works`);
 
         const coverHTML = coverImg
-          ? `<img class="folder-cover-img" src="${coverImg}" alt="${name}" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'folder-cover-placeholder\'><span>&#10022;</span></div>'">`
+          ? `<img class="folder-cover-img" src="${coverImg}" alt="${name}" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;folder-cover-placeholder&quot;><span>&#10022;</span></div>'">`
           : `<div class="folder-cover-placeholder"><span>&#10022;</span></div>`;
 
         const stackImg = (idx) => {
@@ -1643,7 +1643,7 @@
       const colTag = workCollections.length > 0 ? `<div class="lightbox-collection-tag">✦ ${workCollections.join(', ')}</div>` : '';
       document.getElementById('lightbox-inner').innerHTML = `
         <div class="lightbox-img-wrap">
-          <img class="lightbox-img" src="${w.img}" onerror="this.parentNode.innerHTML='<div style=\'color:var(--muted);font-size:0.8rem;padding:2rem;\'>Archivo de imagen no encontrado.</div>'"/>
+          <img class="lightbox-img" src="${w.img}" onerror="this.parentNode.innerHTML='<div style=&quot;color:var(--muted);font-size:0.8rem;padding:2rem;&quot;>Archivo de imagen no encontrado.</div>'"/>
         </div>
         <div class="lightbox-details">
           <span class="lightbox-status ${w.statusClass}">${w.statusLabel[l]}</span>
