@@ -2,6 +2,7 @@
 import { useState, useMemo } from 'react'
 import { artworks } from '@/data/artworks'
 import { useLanguage } from '@/lib/language-context'
+import { isLandscape } from '@/lib/image-orientation'
 import { ArtworkCard } from '@/components/ui/ArtworkCard'
 import { Lightbox } from '@/components/ui/Lightbox'
 import type { Artwork } from '@/types'
@@ -35,6 +36,12 @@ export function WorksGallery() {
       ),
     [typeFilter, statusFilter]
   )
+
+  // Portrait and landscape pieces render as two separate grids so the
+  // landscape ones always start on a fresh row, instead of the last portrait
+  // row and the first landscape pieces sharing one mixed-shape row.
+  const portraitWorks = filtered.filter((work) => !isLandscape(work.img))
+  const landscapeWorks = filtered.filter((work) => isLandscape(work.img))
 
   return (
     <section id="obras" className="max-w-[1440px] mx-auto px-6 md:px-10 py-16">
@@ -76,10 +83,18 @@ export function WorksGallery() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filtered.map((work) => (
+        {portraitWorks.map((work) => (
           <ArtworkCard key={work.id} artwork={work} onClick={() => setSelectedWork(work)} />
         ))}
       </div>
+
+      {landscapeWorks.length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          {landscapeWorks.map((work) => (
+            <ArtworkCard key={work.id} artwork={work} onClick={() => setSelectedWork(work)} />
+          ))}
+        </div>
+      )}
 
       <Lightbox artwork={selectedWork} onClose={() => setSelectedWork(null)} />
     </section>

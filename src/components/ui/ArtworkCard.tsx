@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/lib/language-context'
+import { isLandscape } from '@/lib/image-orientation'
 import type { Artwork } from '@/types'
 
 function formatPrice(price: string): string {
@@ -26,7 +27,9 @@ export function ArtworkCard({ artwork, onClick }: { artwork: Artwork; onClick?: 
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className="group cursor-pointer border border-brand-border bg-brand-card h-full flex flex-col"
     >
-      <div className="relative aspect-[4/5] overflow-hidden">
+      <div
+        className={`relative overflow-hidden ${isLandscape(artwork.img) ? 'aspect-[4/3]' : 'aspect-[4/5]'}`}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`/${artwork.img}`}
