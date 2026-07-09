@@ -1635,6 +1635,9 @@ export function HeroSlideshow() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional:
+    // this is the one-time client/server divergence point that makes hydration
+    // safe (SSR renders the deterministic order, client then randomizes once).
     setImages(shuffle(artworks.map((a) => a.img)))
   }, [])
 
