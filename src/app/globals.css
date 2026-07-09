@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: #0D0D0D;
+    color: #E8E4DC;
+    font-family: var(--font-inter), Inter, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+    font-weight: 400;
+  }
+
+  ::selection {
+    background-color: #8B2E2E;
+    color: #E8E4DC;
+  }
+
+  [id] {
+    scroll-margin-top: 90px;
+  }
+}
