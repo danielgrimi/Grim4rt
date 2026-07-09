@@ -1,4 +1,6 @@
 'use client'
+import { Mail, Phone, Briefcase } from 'lucide-react'
+import { InstagramIcon } from '@/components/ui/InstagramIcon'
 import { siteConfig } from '@/data/site'
 import { useLanguage } from '@/lib/language-context'
 
@@ -18,17 +20,21 @@ export function ContactSection() {
         )}
       </h2>
       <div className="flex flex-wrap justify-center gap-6 text-sm">
-        <a href={`mailto:${siteConfig.email}`} className="hover:text-brand-accentLight transition-colors">
-          📧 {siteConfig.email}
+        <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-2 hover:text-brand-accentLight transition-colors">
+          <Mail size={16} className="shrink-0" />
+          {siteConfig.email}
         </a>
-        <a href={`tel:${siteConfig.phone.replace(/\D/g, '')}`} className="hover:text-brand-accentLight transition-colors">
-          📞 Tel: {siteConfig.phone}
+        <a href={`tel:${siteConfig.phone.replace(/\D/g, '')}`} className="flex items-center gap-2 hover:text-brand-accentLight transition-colors">
+          <Phone size={16} className="shrink-0" />
+          {siteConfig.phone}
         </a>
-        <a href={siteConfig.instagramPersonal} target="_blank" rel="noopener noreferrer" className="hover:text-brand-accentLight transition-colors">
-          🎨 @daniel_grimaldi
+        <a href={siteConfig.instagramPersonal} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-brand-accentLight transition-colors">
+          <InstagramIcon size={16} className="shrink-0" />
+          @daniel_grimaldi
         </a>
-        <a href={siteConfig.instagramStudio} target="_blank" rel="noopener noreferrer" className="hover:text-brand-accentLight transition-colors">
-          💼 @grim4rt_
+        <a href={siteConfig.instagramStudio} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-brand-accentLight transition-colors">
+          <Briefcase size={16} className="shrink-0" />
+          @grim4rt_
         </a>
       </div>
     </section>
