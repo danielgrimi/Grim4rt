@@ -24,7 +24,7 @@ export function ArtworkCard({ artwork, onClick }: { artwork: Artwork; onClick?: 
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="group cursor-pointer border border-brand-border bg-brand-card"
+      className="group cursor-pointer border border-brand-border bg-brand-card h-full flex flex-col"
     >
       <div className="relative aspect-[4/5] overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -34,7 +34,7 @@ export function ArtworkCard({ artwork, onClick }: { artwork: Artwork; onClick?: 
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
-      <div className="p-4">
+      <div className="p-4 flex-1 flex flex-col">
         <span className="text-xs uppercase tracking-wide text-brand-accentLight">
           {statusLabel[language]}
         </span>
@@ -44,7 +44,7 @@ export function ArtworkCard({ artwork, onClick }: { artwork: Artwork; onClick?: 
           <div>{artwork.size}</div>
           <div>{artwork.year}</div>
         </div>
-        <div className="mt-2 text-sm text-brand-text">{formatPrice(artwork.price)}</div>
+        <div className="mt-auto pt-2 text-sm text-brand-text">{formatPrice(artwork.price)}</div>
       </div>
     </motion.div>
   )

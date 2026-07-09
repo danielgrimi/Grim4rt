@@ -20,7 +20,7 @@ export function CollectionsGrid() {
           <Link
             key={collection.slug}
             href={`/colecciones/${collection.slug}`}
-            className="group block border border-brand-border bg-brand-card"
+            className="group block border border-brand-border bg-brand-card h-full flex flex-col"
           >
             <div className="aspect-[4/3] overflow-hidden bg-brand-dark">
               {collection.cover && (
@@ -32,9 +32,9 @@ export function CollectionsGrid() {
                 />
               )}
             </div>
-            <div className="p-4">
+            <div className="p-4 flex-1 flex flex-col">
               <h3 className="font-display text-xl">{collection.name[language]}</h3>
-              <p className="text-xs text-brand-muted mt-1">
+              <p className="text-xs text-brand-muted mt-auto pt-1">
                 {collection.workIds.length} {language === 'es' ? 'obras' : 'works'}
               </p>
             </div>
