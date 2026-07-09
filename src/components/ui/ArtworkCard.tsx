@@ -38,9 +38,9 @@ export function ArtworkCard({ artwork, onClick }: { artwork: Artwork; onClick?: 
         <span className="text-xs uppercase tracking-wide text-brand-accentLight">
           {statusLabel[language]}
         </span>
-        <h3 className="font-display text-xl mt-1">{artwork.title[language]}</h3>
+        <h3 className="font-display text-xl mt-1 truncate">{artwork.title[language]}</h3>
         <div className="text-xs text-brand-muted mt-2 space-y-0.5">
-          <div>{artwork.technique[language]}</div>
+          <div className="truncate">{artwork.technique[language]}</div>
           <div>{artwork.size}</div>
           <div>{artwork.year}</div>
         </div>
