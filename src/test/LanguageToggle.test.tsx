@@ -40,4 +40,15 @@ describe('LanguageToggle', () => {
     fireEvent.click(screen.getByRole('button', { name: 'ES' }))
     expect(screen.getByTestId('current-language')).toHaveTextContent('es')
   })
+
+  it('syncs html lang attribute with language toggle', () => {
+    render(
+      <LanguageProvider>
+        <LanguageToggle />
+      </LanguageProvider>
+    )
+    expect(document.documentElement.lang).toBe('es')
+    fireEvent.click(screen.getByRole('button', { name: 'EN' }))
+    expect(document.documentElement.lang).toBe('en')
+  })
 })
