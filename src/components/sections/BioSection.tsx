@@ -7,9 +7,13 @@ export function BioSection() {
 
   return (
     <section id="bio" className="max-w-[1440px] mx-auto px-6 md:px-10 py-16 grid md:grid-cols-[1fr_2fr_1fr] gap-10">
-      <div className="aspect-square overflow-hidden">
+      <div className="aspect-[884/546] overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/foto bio.jpg" alt="Daniel Grimaldi en su taller" className="w-full h-full object-cover" />
+        <img
+          src="/foto bio.jpg"
+          alt="Daniel Grimaldi en su taller"
+          className="w-full h-full object-cover"
+        />
       </div>
 
       <div className="space-y-4 text-brand-text/90">

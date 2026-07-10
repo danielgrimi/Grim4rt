@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 import { InstagramIcon } from '@/components/ui/InstagramIcon'
 import { siteConfig, navItems, bio } from '@/data/site'
 import { useLanguage } from '@/lib/language-context'
@@ -9,7 +9,7 @@ export function Footer() {
   const { language } = useLanguage()
   const rights = language === 'es' ? 'Todos los derechos reservados' : 'All rights reserved'
   const navigationLabel = language === 'es' ? 'Navegación' : 'Navigation'
-  const contactLabel = language === 'es' ? 'Contacto' : 'Contact'
+  const followLabel = language === 'es' ? 'Sígueme' : 'Follow'
 
   return (
     <footer className="border-t border-brand-border bg-brand-black">
@@ -40,27 +40,9 @@ export function Footer() {
 
           <div>
             <p className="text-xs uppercase tracking-widest text-brand-muted mb-5">
-              {contactLabel}
+              {followLabel}
             </p>
             <ul className="flex flex-col gap-3">
-              <li>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="flex items-center gap-2 text-sm text-brand-text/80 hover:text-brand-accentLight transition-colors"
-                >
-                  <Mail size={14} className="shrink-0" />
-                  {siteConfig.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${siteConfig.phone.replace(/\D/g, '')}`}
-                  className="flex items-center gap-2 text-sm text-brand-text/80 hover:text-brand-accentLight transition-colors"
-                >
-                  <Phone size={14} className="shrink-0" />
-                  {siteConfig.phone}
-                </a>
-              </li>
               <li>
                 <a
                   href={siteConfig.instagramPersonal}
@@ -70,6 +52,17 @@ export function Footer() {
                 >
                   <InstagramIcon size={14} className="shrink-0" />
                   @daniel_grimaldi
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.instagramStudio}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-brand-text/80 hover:text-brand-accentLight transition-colors"
+                >
+                  <InstagramIcon size={14} className="shrink-0" />
+                  @grim4rt_
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-brand-muted">

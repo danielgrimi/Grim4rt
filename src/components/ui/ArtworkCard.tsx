@@ -38,7 +38,11 @@ export function ArtworkCard({ artwork, onClick }: { artwork: Artwork; onClick?: 
         />
       </div>
       <div className="p-4 flex-1 flex flex-col">
-        <span className="text-xs uppercase tracking-wide text-brand-accentLight">
+        <span
+          className={`text-xs uppercase tracking-wide ${
+            artwork.status === 'sold' ? 'text-red-500' : 'text-green-500'
+          }`}
+        >
           {statusLabel[language]}
         </span>
         <h3 className="font-display text-xl mt-1 truncate">{artwork.title[language]}</h3>
