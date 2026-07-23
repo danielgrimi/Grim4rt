@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Artwork {
+  id            String   @id @default(cuid())
+  type          ArtworkType
+  imagePath     String   // Supabase Storage object path, not a full URL
+  titleEs       String
+  titleEn       String
+  techniqueEs   String
+  techniqueEn   String
+  size          String
+  year          String
+  price         String
+  status        ArtworkStatus @default(AVAILABLE)
+  displayOrder  Int
+  isPublished   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  collections   CollectionArtwork[]
+  coverFor      Collection[] @relation("CollectionCover")
+}
+
+model Collection {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  nameEs          String
+  nameEn          String
+  displayOrder    Int
+  coverArtworkId  String?
+  coverArtwork    Artwork? @relation("CollectionCover", fields: [coverArtworkId], references: [id], onDelete: SetNull)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  artworks        CollectionArtwork[]
+}
+
+model CollectionArtwork {
+  collectionId String
+  artworkId    String
+  position     Int
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  artwork      Artwork    @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+
+  @@id([collectionId, artworkId])
+}
+
+model SiteConfig {
+  id                  Int     @id @default(1)
+  name                String
+  taglineEs           String
+  taglineEn           String
+  email               String
+  phone               String
+  whatsapp            String
+  instagramPersonal   String
+  instagramStudio     String
+  bioRoleEs           String
+  bioRoleEn           String
+  bioLocation         String
+  bioSince            String
+  bioPhotoPath        String
+}
+
+model BioParagraph {
+  id        String @id @default(cuid())
+  order     Int
+  textEs    String
+  textEn    String
+}
+
+model PendingUpload {
+  id          String   @id @default(cuid())
+  path        String   // storage path under pending/, e.g. pending/{id}.{ext}
+  mimeType    String
+  createdAt   DateTime @default(now())
+  claimedAt   DateTime?
+}
+
+enum ArtworkType {
+  PAINTING
+  DRAWING
+}
+
+enum ArtworkStatus {
+  AVAILABLE
+  SOLD
+}
